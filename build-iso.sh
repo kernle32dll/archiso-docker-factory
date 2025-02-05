@@ -21,5 +21,9 @@ sed -i 's/root::/root:$6$eFp54axqHlG7Pmvx$ysVIyKD5Lr99dCzGoDRDi3oKURB\/bRaMvJUCJ
 # Add additional packages
 echo 'htop' >> archlive/packages.x86_64
 echo 'lm_sensors' >> archlive/packages.x86_64
+echo 'base-devel' >> archlive/packages.x86_64
+echo 'git' >> archlive/packages.x86_64
 
-mkarchiso -v -w /tmp/archiso-tmp -o /out archlive
+mkarchiso -v -w /tmp/archiso-tmp -o /out-tmp archlive
+chown "$ISO_USER:$ISO_GROUP" /out-tmp/*.iso
+mv /out-tmp/*.iso /out
